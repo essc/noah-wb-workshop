@@ -1,0 +1,28 @@
+<html>
+<head>
+	<title>Leaflet</title>
+	<link rel="stylesheet" href="leaflet.css" />
+	<script src="js/leaflet.js"></script>
+	<script src="js/KML.js"></script>
+</head>
+<body>
+	<!-- define a DIV into which the map will appear. Make it take up the whole window -->
+	<div style="width:100%; height:100%" id="map"></div>
+<script type='text/javascript'>
+
+<!-- Set map center to Metro Manila at zoom level 13 using OSM Default tile -->
+var map = new L.Map('map', {center: new L.LatLng(14.6146, 121.0081), zoom: 13});
+var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+
+<!-- Add NOAH climateex dynamic KML and zoom the map to the KML extents only. -->
+var forecast = new L.KML("rain-forecast.kml", {async: true});
+//forecast.on("loaded", function(e) { map.fitBounds(e.target.getBounds()); });
+
+map.addLayer(forecast);
+map.addLayer(osm);
+
+
+</script>
+ 
+</body>
+</html>
