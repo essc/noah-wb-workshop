@@ -1,0 +1,151 @@
+ 
+========================
+Using Git and GitHub
+========================
+
+
+Setting up your GitHub account and Git
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+1. Create a GitHub account, 
+https://github.com/users
+
+2. Set up Git in your 
+machine.  Open the `Terminal`.
+
+Add your username ::
+
+ $ git config --global user.name "Your Name Here"
+ # Sets the default name for git to use when you commit
+
+Add your email ::
+
+ git config --global user.email "your_email@example.com"
+ # Sets the default email for git to use when you commit 
+
+Your email address for Git should be the same one associated with your 
+GitHub account.
+
+3. Password caching. Tell git that you don't want to type your username and 
+password every time you talk to a remote server. ::
+
+ $ git config --global credential.helper cache
+ # Set git to use the credential memory cache
+ 
+ $ git config --global credential.helper 'cache --timeout=3600'
+ # Set the cache to timeout after 1 hour (setting is in seconds)
+
+Forking a repo
+,,,,,,,,,,,,,,,,,,,,,,,,
+
+We will start editing some files to the ``noah-wb-workshop`` repository.
+
+1.  To fork the repo, go to 
+https://github.com/essc/noah-wb-workshop
+
+2. Click the `Fork` 
+button.
+
+.. image:: images/fork_noahwb_repo.png
+   :align: center
+   :width: 500 pt
+
+The repo is now forked in your own GitHub account, but, you need clone
+the project in your local machine to work on the project.
+
+3. Cloning your fork.  
+In the `Terminal`, ::
+
+ $ git clone https://github.com/username/noah-wb-workshop.git
+ # Clones your fork of the repository into the current directory in terminal
+
+4. Configuring remotes.  We will add a new remote in order to keep track and 
+get updates from the original ``essc`` repository. We will label this as 
+``upstream``. ::
+ 
+ $ cd noah-wb-workshop
+ # Changes the active directory in the prompt to the newly cloned directory
+ $ git remote add upstream https://github.com/essc/noah-wb-workshop.git
+ # Assigns the original repository to a remote called "upstream"
+ $ git fetch upstream
+ # Pulls in changes not present in your local repository, without modifying your files
+
+
+Editing files in your forked project.
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+1. In your file manager, open the ``noah-wb-workshop`` directory. Go to the ``webmap``
+directory.  Open the ``map1.html`` in a text editor.  This is a page template
+for a webmap we will create.
+
+.. include:: webmap/map1.html
+   :literal:
+
+2. Let's add the OpenStreetMap default tiles.  Inside the ``body`` tag, add the 
+following::
+
+ <script type='text/javascript'>
+ var map = new L.Map('map', {center: new L.LatLng(14.6146, 121.0081), zoom: 10});
+ var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+          
+ map.addLayer(osm);
+ </script>
+
+3. Save the your html file and open in your web 
+browser.
+
+.. image:: images/map1.png
+   :align: center
+   :width: 400 pt
+
+
+4. Let's add the ``Precipitation`` layer from http://www.openweathermap.org/ .
+Below the ``map.addLayer(osm);``, add the following::
+
+ var precipitation = L.OWM.precipitation({showLegend: false, opacity: 0.5});
+ map.addLayer(precipitation);
+
+The full html should look like this:
+
+.. include:: webmap/map1fin.html
+   :literal:
+
+
+And your map like this:
+
+.. image:: images/map1_precip.png
+   :align: center
+   :width: 500 pt
+
+
+Commit your changes in Git and GitHub
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+1. Let's commit your changes in your local repository.  
+In the `Terminal`::
+
+ $ git commit -m 'first commit'
+ # Commits your files, adding the message "first commit"
+
+2. Your commits are now in your local repository.  
+To push your commits to GitHub::
+
+ $ git push
+ # Sends your commits in the "gh-pages" branch to GitHub
+
+3. Go to your Github project page to see the 
+changes.
+
+
+.. For demo we show the following
+   Pull in upstream changes
+   Pull requests
+   Submit issues
+
+References
+,,,,,,,,,,,,,,,,,,,
+
+* https://help.github.com/categories/54/articles
+* http://git-scm.com/
+* http://gitimmersion.com/
+* http://wiki.openstreetmap.org/wiki/User:Zartbitter/OpenWeatherMap
