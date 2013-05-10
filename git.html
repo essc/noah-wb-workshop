@@ -1,0 +1,282 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Using Git and GitHub &mdash; NOAH-WB-FOSS4G Workshop 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="NOAH-WB-FOSS4G Workshop 0.1 documentation" href="index.html" />
+    <link rel="next" title="Document License (GFDL V.1.3)" href="gfdl.html" />
+    <link rel="prev" title="NOAH-WB-FOSS4G Workshop Materials" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="gfdl.html" title="Document License (GFDL V.1.3)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="NOAH-WB-FOSS4G Workshop Materials"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">NOAH-WB-FOSS4G Workshop 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="using-git-and-github">
+<h1>Using Git and GitHub<a class="headerlink" href="#using-git-and-github" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="setting-up-your-github-account-and-git">
+<h2>Setting up your GitHub account and Git<a class="headerlink" href="#setting-up-your-github-account-and-git" title="Permalink to this headline">¶</a></h2>
+<p>1. Create a GitHub account,
+<a class="reference external" href="https://github.com/users">https://github.com/users</a></p>
+<p>2. Set up Git in your
+machine.  Open the <cite>Terminal</cite>.</p>
+<p>Add your username</p>
+<div class="highlight-python"><pre>$ git config --global user.name "Your Name Here"
+# Sets the default name for git to use when you commit</pre>
+</div>
+<p>Add your email</p>
+<div class="highlight-python"><pre>git config --global user.email "your_email@example.com"
+# Sets the default email for git to use when you commit</pre>
+</div>
+<p>Your email address for Git should be the same one associated with your
+GitHub account.</p>
+<p>3. Password caching. Tell git that you don&#8217;t want to type your username and
+password every time you talk to a remote server.</p>
+<div class="highlight-python"><pre>$ git config --global credential.helper cache
+# Set git to use the credential memory cache
+
+$ git config --global credential.helper 'cache --timeout=3600'
+# Set the cache to timeout after 1 hour (setting is in seconds)</pre>
+</div>
+</div>
+<div class="section" id="forking-a-repo">
+<h2>Forking a repo<a class="headerlink" href="#forking-a-repo" title="Permalink to this headline">¶</a></h2>
+<p>We will start editing some files to the <tt class="docutils literal"><span class="pre">noah-wb-workshop</span></tt> repository.</p>
+<p>1.  To fork the repo, go to
+<a class="reference external" href="https://github.com/essc/noah-wb-workshop">https://github.com/essc/noah-wb-workshop</a></p>
+<p>2. Click the <cite>Fork</cite>
+button.</p>
+<img alt="_images/fork_noahwb_repo.png" class="align-center" src="_images/fork_noahwb_repo.png" style="width: 500pt;" />
+<p>The repo is now forked in your own GitHub account, but, you need clone
+the project in your local machine to work on the project.</p>
+<p>3. Cloning your fork.
+In the <cite>Terminal</cite>,</p>
+<div class="highlight-python"><pre>$ git clone https://github.com/username/noah-wb-workshop.git
+# Clones your fork of the repository into the current directory in terminal</pre>
+</div>
+<p>4. Configuring remotes.  We will add a new remote in order to keep track and
+get updates from the original <tt class="docutils literal"><span class="pre">essc</span></tt> repository. We will label this as
+<tt class="docutils literal"><span class="pre">upstream</span></tt>.</p>
+<div class="highlight-python"><pre>$ cd noah-wb-workshop
+# Changes the active directory in the prompt to the newly cloned directory
+$ git remote add upstream https://github.com/essc/noah-wb-workshop.git
+# Assigns the original repository to a remote called "upstream"
+$ git fetch upstream
+# Pulls in changes not present in your local repository, without modifying your files</pre>
+</div>
+</div>
+<div class="section" id="editing-files-in-your-forked-project">
+<h2>Editing files in your forked project.<a class="headerlink" href="#editing-files-in-your-forked-project" title="Permalink to this headline">¶</a></h2>
+<p>1. In your file manager, open the <tt class="docutils literal"><span class="pre">noah-wb-workshop</span></tt> directory. Go to the <tt class="docutils literal"><span class="pre">webmap</span></tt>
+directory.  Open the <tt class="docutils literal"><span class="pre">map1.html</span></tt> in a text editor.  This is a page template
+for a webmap we will create.</p>
+<pre class="literal-block">
+&lt;html&gt;
+&lt;head&gt;
+        &lt;meta http-equiv=&quot;Content-type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+        &lt;title&gt;Leaflet Map1&lt;/title&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;leaflet.css&quot; /&gt;
+        &lt;script src=&quot;js/leaflet.js&quot;&gt;&lt;/script&gt;
+        &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;leaflet-openweathermap.css&quot; /&gt;
+        &lt;script type=&quot;text/javascript&quot; src=&quot;js/leaflet-openweathermap.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+        &lt;!-- define a DIV into which the map will appear. Make it take up the whole window --&gt;
+        &lt;div style=&quot;width:100%; height:100%&quot; id=&quot;map&quot;&gt;&lt;/div&gt;
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+
+</pre>
+<p>2. Let&#8217;s add the OpenStreetMap default tiles.  Inside the <tt class="docutils literal"><span class="pre">body</span></tt> tag, add the
+following:</p>
+<div class="highlight-python"><pre>&lt;script type='text/javascript'&gt;
+var map = new L.Map('map', {center: new L.LatLng(14.6146, 121.0081), zoom: 10});
+var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+
+map.addLayer(osm);
+&lt;/script&gt;</pre>
+</div>
+<p>3. Save the your html file and open in your web
+browser.</p>
+<img alt="_images/map1.png" class="align-center" src="_images/map1.png" style="width: 400pt;" />
+<p>4. Let&#8217;s add the <tt class="docutils literal"><span class="pre">Precipitation</span></tt> layer from <a class="reference external" href="http://www.openweathermap.org/">http://www.openweathermap.org/</a> .
+Below the <tt class="docutils literal"><span class="pre">map.addLayer(osm);</span></tt>, add the following:</p>
+<div class="highlight-python"><pre>var precipitation = L.OWM.precipitation({showLegend: false, opacity: 0.5});
+map.addLayer(precipitation);</pre>
+</div>
+<p>The full html should look like this:</p>
+<pre class="literal-block">
+&lt;html&gt;
+&lt;head&gt;
+        &lt;meta http-equiv=&quot;Content-type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+        &lt;title&gt;Leaflet Map1&lt;/title&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;leaflet.css&quot; /&gt;
+        &lt;script src=&quot;js/leaflet.js&quot;&gt;&lt;/script&gt;
+        &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;leaflet-openweathermap.css&quot; /&gt;
+        &lt;script type=&quot;text/javascript&quot; src=&quot;js/leaflet-openweathermap.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+        &lt;!-- define a DIV into which the map will appear. Make it take up the whole window --&gt;
+        &lt;div style=&quot;width:100%; height:100%&quot; id=&quot;map&quot;&gt;&lt;/div&gt;
+
+        &lt;script type='text/javascript'&gt;
+
+        &lt;!-- Set map center to Metro Manila at zoom level 10 using OSM Default tile --&gt;         
+        var map = new L.Map('map', {center: new L.LatLng(14.6146, 121.0081), zoom: 10});
+        var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+
+        map.addLayer(osm);
+
+        &lt;!-- Add precipitation layer from openweathermap --&gt;
+        var precipitation = L.OWM.precipitation({showLegend: false, opacity: 0.5});
+
+        map.addLayer(precipitation);
+        &lt;/script&gt;
+
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+
+</pre>
+<p>And your map like this:</p>
+<img alt="_images/map1_precip.png" class="align-center" src="_images/map1_precip.png" style="width: 500pt;" />
+</div>
+<div class="section" id="commit-your-changes-in-git-and-github">
+<h2>Commit your changes in Git and GitHub<a class="headerlink" href="#commit-your-changes-in-git-and-github" title="Permalink to this headline">¶</a></h2>
+<p>1. Let&#8217;s commit your changes in your local repository.
+In the <cite>Terminal</cite>:</p>
+<div class="highlight-python"><pre>$ git commit -m 'first commit'
+# Commits your files, adding the message "first commit"</pre>
+</div>
+<p>2. Your commits are now in your local repository.
+To push your commits to GitHub:</p>
+<div class="highlight-python"><pre>$ git push
+# Sends your commits in the "gh-pages" branch to GitHub</pre>
+</div>
+<p>3. Go to your Github project page to see the
+changes.</p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://help.github.com/categories/54/articles">https://help.github.com/categories/54/articles</a></li>
+<li><a class="reference external" href="http://git-scm.com/">http://git-scm.com/</a></li>
+<li><a class="reference external" href="http://gitimmersion.com/">http://gitimmersion.com/</a></li>
+<li><a class="reference external" href="http://wiki.openstreetmap.org/wiki/User:Zartbitter/OpenWeatherMap">http://wiki.openstreetmap.org/wiki/User:Zartbitter/OpenWeatherMap</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/essclogotrace_thumbnail.jpg" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Using Git and GitHub</a><ul>
+<li><a class="reference internal" href="#setting-up-your-github-account-and-git">Setting up your GitHub account and Git</a></li>
+<li><a class="reference internal" href="#forking-a-repo">Forking a repo</a></li>
+<li><a class="reference internal" href="#editing-files-in-your-forked-project">Editing files in your forked project.</a></li>
+<li><a class="reference internal" href="#commit-your-changes-in-git-and-github">Commit your changes in Git and GitHub</a></li>
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">NOAH-WB-FOSS4G Workshop Materials</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="gfdl.html"
+                        title="next chapter">Document License (GFDL V.1.3)</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/git.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="gfdl.html" title="Document License (GFDL V.1.3)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="NOAH-WB-FOSS4G Workshop Materials"
+             >previous</a> |</li>
+        <li><a href="index.html">NOAH-WB-FOSS4G Workshop 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, http://www.essc.org.ph license under GNU Free Document License.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

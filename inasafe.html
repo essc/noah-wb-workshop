@@ -1,0 +1,465 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Using InaSAFE plugin in QGIS &mdash; NOAH-WB-FOSS4G Workshop 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="NOAH-WB-FOSS4G Workshop 0.1 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="index.html">NOAH-WB-FOSS4G Workshop 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="using-inasafe-plugin-in-qgis">
+<h1>Using InaSAFE plugin in QGIS<a class="headerlink" href="#using-inasafe-plugin-in-qgis" title="Permalink to this headline">¶</a></h1>
+<p>InaSAFE is a plugin for QGIS. It aims to produce realistic natural
+hazard impact scenarios for better planning, preparedness and response
+activities, using hazard and exposure geographic data.</p>
+<p>During this training, you will explore the different components of
+InaSAFE plugin and their usage for an easy-to-use risk and impact scenarios
+assessments.</p>
+<div class="section" id="concept">
+<h2>Concept<a class="headerlink" href="#concept" title="Permalink to this headline">¶</a></h2>
+<p>To effectively prepare for future floods, earthquakes or tsunami you must first
+understand the likely impacts that need to be managed. For example, to prepare
+contingency plans for a severe flood, emergency managers need to
+answer questions like:</p>
+<ul class="simple">
+<li>what are the areas likely to be affected;</li>
+<li>how many people will need to be evacuated and sheltered;</li>
+<li>which schools will be closed;</li>
+<li>which hospitals can still take patients; and</li>
+<li>what roads will be closed?</li>
+</ul>
+</div>
+<div class="section" id="how-does-it-work">
+<h2>How does it work?<a class="headerlink" href="#how-does-it-work" title="Permalink to this headline">¶</a></h2>
+<p>InaSAFE provides a simple but rigorous way to combine data from scientists,
+local governments and communities to provide insights into the likely impacts
+of future disaster events. The software is focused on examining, in detail,
+the impacts by a single hazard would have on specific sectors.</p>
+<img alt="_images/inasafe_chart.png" class="align-center" src="_images/inasafe_chart.png" style="width: 450pt;" />
+<p>At the end of this material, you will be able to:</p>
+<ul class="simple">
+<li>install a plugin in QGIS and understand its usage for spatial analysis;</li>
+<li>understand what are hazard and exposure data and how they can be used to
+estimate impacts;</li>
+<li>learn how to prepare the data to be able to use it in InaSAFE;</li>
+<li>perform a risk scenario using flood and earthquake data;</li>
+<li>analyze estimated impact of the example scenarios;</li>
+<li>learn how to print and save the result of the simulation.</li>
+</ul>
+</div>
+<div class="section" id="install-inasafe-plugin-from-qgis-repository">
+<h2>Install InaSAFE Plugin from QGIS Repository<a class="headerlink" href="#install-inasafe-plugin-from-qgis-repository" title="Permalink to this headline">¶</a></h2>
+<p>To install the InaSAFE, use the plugin manager in QGIS:</p>
+<p>1. Click the menu
+<em class="menuselection">Plugins ‣</em>
+<em class="guilabel">Fetch Python Plugins</em>.</p>
+<p>2. Then search for <cite>InaSAFE</cite>, select it and click the install button. The plugin
+will now be added to your plugins menu.</p>
+<img alt="_images/inasafe_plugin_install.png" class="align-center" src="_images/inasafe_plugin_install.png" style="width: 300pt;" />
+<div class="section" id="enable-inasafe-plugin-in-qgis">
+<h3>Enable InaSAFE Plugin in QGIS<a class="headerlink" href="#enable-inasafe-plugin-in-qgis" title="Permalink to this headline">¶</a></h3>
+<p>1. Once the plugin is extracted in QGIS plugin directory, start QGIS and enable it
+from the plugin manager.  To do this, open <em class="guilabel">Manage Plugins</em> from the
+<em class="menuselection">Plugins</em> menu on the menu toolbar.</p>
+<img alt="_images/manage_plugin.png" class="align-center" src="_images/manage_plugin.png" style="width: 150pt;" />
+<p>2. A pop-up window that lists all available plugins in your current QGIS project
+will appear. Type <cite>InaSAFE</cite> in the filter box. You should see the InaSAFE
+plugin appear in the list. Now <em class="guilabel">tick the checkbox</em> next to it to enable the
+plugin.</p>
+<img alt="_images/inasafe_plugin_activate.png" class="align-center" src="_images/inasafe_plugin_activate.png" style="width: 300pt;" />
+<p>The plugin now will be added to your <em class="menuselection">Plugins</em> menu.</p>
+<p>3. Now you will need to add the InaSAFE panel on your QGIS interface. For that,
+select <em class="menuselection">Toggle InaSAFE Dock</em> in the InaSAFE plugin scroll list.</p>
+<img alt="_images/inasafe_plugin_toggle.png" class="align-center" src="_images/inasafe_plugin_toggle.png" style="width: 300pt;" />
+<p>The InaSAFE dock panel will then appear on the right of your QGIS window.</p>
+<img alt="_images/inasafe_plugin_dialog.png" class="align-center" src="_images/inasafe_plugin_dialog.png" style="width: 300pt;" />
+<p>It is the main way to interact with the tools that are provided in InaSAFE.</p>
+<p>Also, an InaSAFE icon will appear on the QGIS toolbar.</p>
+<img alt="_images/inasafe_plugin_toolbar.png" class="align-center" src="_images/inasafe_plugin_toolbar.png" style="width: 120pt;" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">InaSAFE may not install properly depending on your operating system. You may
+need to install additional Python modules in order to proceed.</p>
+</div>
+</div>
+</div>
+<div class="section" id="using-inasafe">
+<h2>Using InaSAFE<a class="headerlink" href="#using-inasafe" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="inasafe-options">
+<h3>InaSAFE Options<a class="headerlink" href="#inasafe-options" title="Permalink to this headline">¶</a></h3>
+<p>The InaSAFE plugin provides an options dialog which allows you to define
+various options relating to how InaSAFE will behave.</p>
+<p>1. The options dialog can be
+launched by clicking on the InaSAFE plugin toolbars options icon (as shown
+below) or from QGIS <em class="menuselection">Plugins ‣ InaSAFE ‣ InaSAFE Options</em>.</p>
+<img alt="_images/inasafe_plugin_option_icon.png" class="align-center" src="_images/inasafe_plugin_option_icon.png" style="width: 120pt;" />
+<p>2. Then the dialog will appear, looking something like
+this:</p>
+<img alt="_images/inasafe_plugin_option.png" class="align-center" src="_images/inasafe_plugin_option.png" style="width: 300pt;" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can click on the <em class="guilabel">Help</em> button at any time and it will open the
+help documentation browser to this page.</p>
+</div>
+<p>The following options are available on the Options Dialog:</p>
+<ul class="simple">
+<li><strong>Only show visible layers in the InaSAFE dock:</strong> This option will determine
+whether (when unchecked) all hazard, exposure and impact layers should be
+listed in the InaSAFE dock combo boxes; or (when checked) only visible
+layers.</li>
+<li><strong>Set QGIS layer name from title in keywords:</strong> This option will (when
+enabled) cause QGIS to name layers in the Layers tree, using the title
+keyword in the layers keywords file. If the layer has no title in its
+keywords, or it has no keywords at all, the normal QGIS behavior for naming
+layers will apply.</li>
+<li><strong>Zoom to impact layer on scenario estimate completion:</strong> This option will
+cause the map view to zoom in/out in order to completely contain the InaSAFE
+impact scenario map output when an analysis is completed.</li>
+<li><strong>Hide exposure layer on scenario estimate completion:</strong> This option will
+cause QGIS to turn off the exposure layer used when InaSAFE completes the
+current analysis. You can re-enable the layer visibility again by checking
+its checkbox in the legend.</li>
+<li><strong>Keyword cache for remote datasources:</strong> This option is used to determine
+where keywords are stored for datasets where it is not possible to write them
+into a .keywords file. See Keywords System for more information on the
+keywords system.</li>
+<li><strong>Run analysis in separate thread (experimental):</strong> This option cause the
+analysis to be run in its own thread.</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<ul class="last simple">
+<li>It is not recommended to use the threaded implementation at this time. For
+this reason it is disabled by default.</li>
+<li>Pressing Cancel at any time will close the options dialog and any changes
+made will not be applied.</li>
+<li>Pressing OK at any time will close the options dialog and any changes made
+will be applied immediately.</li>
+<li>The exact button order shown on this dialog may differ depending on your
+operating system or desktop environment.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="adjust-projection">
+<h3>Adjust Projection<a class="headerlink" href="#adjust-projection" title="Permalink to this headline">¶</a></h3>
+<p>Before continuing we need to turn one more QGIS functionality on, to enable all
+data layers display in one projection (<cite>WGS-84</cite>).</p>
+<p>1. For that, go to QGIS
+<em class="menuselection">Settings ‣ Project Properties</em>.</p>
+<p>2. Click on <em class="guilabel">Coordinate Reference System (CRS)</em> tab in the new dialog box. Tick
+the <em class="guilabel">Enable on  the fly CRS transformation</em> box. And then <em class="guilabel">OK</em>.</p>
+<img alt="_images/inasafe_crs.png" class="align-center" src="_images/inasafe_crs.png" style="width: 300pt;" />
+<p>Now, any data layer that we will integrate into our project will be adjusted on
+the same coordinate.</p>
+</div>
+<div class="section" id="exploring-inasafe-plugin">
+<h3>Exploring InaSAFE Plugin<a class="headerlink" href="#exploring-inasafe-plugin" title="Permalink to this headline">¶</a></h3>
+<p>1. You can drag and drop the dock panel to reposition it in the user interface.
+For example, dragging the panel towards the left margin of the QGIS
+application will dock it to the left side of the screen.</p>
+<p>2. Depending on your preference you could show the <em class="guilabel">Layer</em> and <em class="guilabel">InaSAFE</em>
+panel at the same time.</p>
+<p>Or have the <em class="guilabel">Layer</em> and <em class="guilabel">InaSAFE</em> panels in a tab systems.</p>
+<p>Or for more convenience, having them on top of each other.</p>
+<img alt="_images/inasafe_panel_above_layer.png" class="align-center" src="_images/inasafe_panel_above_layer.png" style="width: 300pt;" />
+<p>The INASAFE panel contains 3 sections: <strong>Questions, Results</strong> and <strong>Buttons.</strong>
+We will explore those sections one by one.</p>
+</div>
+<div class="section" id="the-questions-section">
+<h3>The Questions Section<a class="headerlink" href="#the-questions-section" title="Permalink to this headline">¶</a></h3>
+<p>The intention of InaSAFE is to make it really simple and easy to perform your
+impact analysis. The Questions area provides a simple way for you to formulate
+what it is you want to find out? All questions are formulated in the form:</p>
+<p><em>In the event of</em> <strong>[hazard]</strong> <em>how many</em> <strong>[exposure]</strong> <em>might</em> <strong>[impact].</strong></p>
+<p>For example:
+In the event of a <strong>flood</strong> how many <strong>buildings</strong> might be <strong>closed</strong>?</p>
+<p>In order to answer such question, InaSAFE developers have built a number of
+impact functions that cover risk scenarios such as flood, tsunami, volcanic ash
+fall, earthquake and so on. In our case, we will use the flood impact function.</p>
+<p>To answer our question <strong>In the event of a flood, how many buildings might be
+closed</strong>, we need to complete all the areas in the Questions section: hazard,
+exposure, impact.</p>
+</div>
+<div class="section" id="hazard">
+<h3>Hazard<a class="headerlink" href="#hazard" title="Permalink to this headline">¶</a></h3>
+<p>Hazard is the physical event that creates the risk.</p>
+<p>A hazard (in <strong>the event of</strong>) may be represented as a raster layer or as an
+area (polygon). For example:</p>
+<ul class="simple">
+<li><strong>Raster:</strong> where each pixel in the raster represents the current flood depth
+following an inundation event.</li>
+<li><strong>Polygon:</strong> where it has been identified that flood has existed in that area
+(this will not have depth related information)</li>
+</ul>
+<p>For our exercise, we will use Quiapo data. Those data
+are in your computer at <tt class="file docutils literal"><span class="pre">quiapo</span></tt> directory.</p>
+<p>1. We will add the hazard layer in the INASAFE dock. For that, we need to add
+the hazard layer from QGIS first. The flood layer is in a raster format, so we
+will go to the QGIS menu, click on <em class="menuselection">Layer ‣ Add Raster Layer</em>.</p>
+<p>2. Once you click on that, a pop-up window will appear where you will have to
+fetch your flood data.  Please select the
+<tt class="file docutils literal"><span class="pre">flood_100yr.tif</span></tt> file from the <tt class="file docutils literal"><span class="pre">~/quiapo/raster/flood</span></tt> directory.</p>
+<p>This is a raster data (in GTiff format) that represents flooding depth in
+Quiapo area for a return period of 100 years. Use the <cite>flood.qml</cite> as your
+raster style.</p>
+<img alt="_images/quiapo_5yr_flood.png" class="align-center" src="_images/quiapo_5yr_flood.png" style="width: 300pt;" />
+<p>You will notice that the layer filled automatically the <em class="guilabel">hazard</em> area in the
+InaSAFE dock panel. There are two important things to note when uploading
+data in InaSAFE.</p>
+<ul class="simple">
+<li>Data should follow a keyword metadata system that allows InaSAFE to determine
+if the layer is a hazard or if it is an exposure.</li>
+<li>The area of analysis should overlap.</li>
+</ul>
+</div>
+<div class="section" id="adding-keyword-metadata">
+<h3>Adding keyword metadata<a class="headerlink" href="#adding-keyword-metadata" title="Permalink to this headline">¶</a></h3>
+<p>You may be wondering how the InaSAFE plugin determines whether a layer should
+be listed in the <em class="guilabel">In the event of</em> <em class="guilabel">How many</em> combo boxes? The plugin
+relies on simple keyword metadata to be associated with each layer. Each layer
+that has a keyword allocating it&#8217;s category to hazard will be listed in the
+<em class="guilabel">In the event of</em> combo. Similarly, a category of exposure in the keywords for a
+layer will result in it being listed under the <em class="guilabel">How many</em> combo. InaSAFE uses
+the combination of category, subcategory, units and datatype keywords to
+determine which impact functions will be listed in the <em class="guilabel">Might</em> combo.</p>
+<p>In our exercise, the keywords were already created, so the data could fill
+automatically the <em class="guilabel">In the event of</em> <em class="guilabel">How many combo</em> boxes. If the keywords
+were not created in advance, then we will create them by following one of the
+two steps:</p>
+<p>1. Go to the InaSAFE tools on the toolbar, click on the <em class="guilabel">Keyword Editor</em>
+icon.</p>
+<img alt="_images/inasafe_keyword_editor_icon.png" class="align-center" src="_images/inasafe_keyword_editor_icon.png" style="width: 150pt;" />
+<p>Or, open the <em class="menuselection">Plugin</em> menu on QGIS toolbar, click on
+<em class="menuselection">InaSAFE</em>, then click
+on the <em class="menuselection">Keyword Editor</em> in the scroll list.</p>
+<img alt="_images/inasafe_keyword_editor_menu.png" class="align-center" src="_images/inasafe_keyword_editor_menu.png" style="width: 300pt;" />
+<p>2. Once you click on the <em class="guilabel">Keyword Editor</em>, a dialog box containing the flood data
+will be prompted. Since the flood data is a hazard layer, pinpoint the
+<em class="guilabel">Hazard</em> Category. In the Subcategory, we will choose <em class="guilabel">flood [m]</em>
+because our data represents depth of flood in Manila in meter unit.</p>
+<img alt="_images/inasafe_hazard_keyword.png" class="align-center" src="_images/inasafe_hazard_keyword.png" style="width: 300pt;" />
+<p>3. Then click
+<em class="guilabel">OK</em>.</p>
+<p>Now the data follow the keyword rule, and can be used in the InaSAFE function.</p>
+</div>
+<div class="section" id="exposure">
+<h3>Exposure<a class="headerlink" href="#exposure" title="Permalink to this headline">¶</a></h3>
+<p>Exposure is the sum of assets and population that are at risks.</p>
+<p>An exposure (How many) layer could be represented, for example, as vector
+polygon data representing building outlines, or a raster outline where each
+pixel represents the number of people resident in that cell.</p>
+<p>Now, we will add the exposure layer in our InaSAFE project. For that, we need
+to add the exposure layer to QGIS first. For our exercise, we will use the
+data that represents buildings.</p>
+<p>1. The OSM building layer is in a vector format, so we will go to the QGIS menu
+toolbar, click on <em class="menuselection">Layer ‣ Add Vector Layer</em>.</p>
+<p>Please note that the exposure data should follow the same keyword system
+that we explained earlier for the hazard data.</p>
+<p>We will create it by using the <em class="guilabel">Keyword Editor</em>.</p>
+<p>2. Go to the <em class="menuselection">Plugin ‣ InaSAFE ‣ Keyword Editor</em> in the dialog box.
+Pinpoint the <em class="guilabel">Exposure</em> category.</p>
+<p>3. Choose <em class="guilabel">structure</em> in the <em class="guilabel">Subcategory</em> scroll box. Click
+<em class="guilabel">OK</em>.</p>
+<img alt="_images/inasafe_exposure_keyword.png" class="align-center" src="_images/inasafe_exposure_keyword.png" style="width: 300pt;" />
+<p>Now our OSM building exposure data can be used in INASAFE and was automatically
+entered in the <em class="guilabel">How many</em> box of the INASAFE dock panel.</p>
+<img alt="_images/inasafe_hazard_exposure_layers.png" class="align-center" src="_images/inasafe_hazard_exposure_layers.png" style="width: 300pt;" />
+</div>
+<div class="section" id="impact-analysis">
+<h3>Impact Analysis<a class="headerlink" href="#impact-analysis" title="Permalink to this headline">¶</a></h3>
+<p>The impact function (<em class="guilabel">Might</em>) will spatially combine the hazard and exposure
+input layers in order to postulate what the impacts of the hazard will be on
+the exposure infrastructure or people. By selecting a combination from the
+<em class="guilabel">In the event of</em> and <em class="guilabel">How many</em> combo boxes, an appropriate set
+of impact functions will be listed in the <em class="guilabel">Might</em> combo box.</p>
+<p>Impact scenarios are predefined depending on what the decision-maker is looking
+for. For our flood analysis in Jakarta, we only have on predefined impact
+function which asks: <strong>In case of flood event, how many buildings might be
+temporarily closed?</strong> As we see on the previous step, this is filled
+automatically by default in the InaSAFE panel dock as soon as the hazard
+[flood] and exposure [buildings] layers are entered correctly.</p>
+</div>
+<div class="section" id="the-results-section">
+<h3>The Results section<a class="headerlink" href="#the-results-section" title="Permalink to this headline">¶</a></h3>
+<p>1. Now that we have our two input layers and that we know what impacts we would
+like to assess, click on the <em class="guilabel">Run</em> button at the bottom to start the impact
+analysis. At the end of the process, figures will be shown in the
+<em class="guilabel">Results</em> section, a new layer will be added in the QGIS layer panel representing the
+result of the impact function, and the map will differentiate affected and
+non-affected building.</p>
+<img alt="_images/inasafe_flood_impact_results.png" class="align-center" src="_images/inasafe_flood_impact_results.png" style="width: 300pt;" />
+<p>2. The result shows <strong>total number of buildings</strong> and the
+<strong>number of buildings that might be temporarily closed</strong> in the event of a flood.
+Also, there is an <strong>Action Checklist</strong> where the question:
+<em>Are the critical facilities still open?</em> And a <strong>Note</strong> description explaining
+that buildings are said flooded when the flood level exceeds 1 meter.</p>
+</div>
+<div class="section" id="enhancing-the-map-output">
+<h3>Enhancing the Map Output<a class="headerlink" href="#enhancing-the-map-output" title="Permalink to this headline">¶</a></h3>
+<p>The final output map can be enhanced using cartographic functions in QGIS.
+Styles can be changed, background layer or other relevant layers can be added,
+layout can be changed using the <em class="guilabel">Print Composer</em> in QGIS.</p>
+<p>If you would like to add a background layer to your map, all you need to do
+is add a new plugin called <em class="guilabel">OpenLayers Plugin</em> in QGIS and follow the same
+steps as we did to acquire the InaSAFE plugin.</p>
+<p>1. To enable the OpenLayers plugin, go to the QGIS <em class="guilabel">Plugin Manager</em> and select
+<em class="guilabel">OpenLayers Plugin</em> if it is not yet activated.</p>
+<p>2. Once installed you should be able to use background imagery and tiles from
+Google, Bing, OpenStreetMap and others.</p>
+<img alt="_images/plugin_manager.png" class="align-center" src="_images/plugin_manager.png" style="width: 300pt;" />
+<p>3. For our exercise, let&#8217;s add the <em class="menuselection">Bing Aerial</em> view to our map as a
+background. Make sure that the background is not on top of the other active
+layers.</p>
+<img alt="_images/inasafe_flood_impact_results_bing.png" class="align-center" src="_images/inasafe_flood_impact_results_bing.png" style="width: 300pt;" />
+</div>
+<div class="section" id="print-results">
+<h3>Print Results<a class="headerlink" href="#print-results" title="Permalink to this headline">¶</a></h3>
+<p>The data shown on the screen can be saved into a <strong>PDF file</strong> by clicking on
+<em class="guilabel">Print</em> at the bottom of the InaSAFE panel. The PDF file contains then the
+legend for the result of the impact assessment, the map created and a
+table summarizing the results from the impact function.</p>
+<p>However, any change that you want to make into the final map document should be
+done before clicking on the <em class="guilabel">Print</em> button of the InaSAFE dock panel. The
+print should be only use once the data is exactly as you want it to be
+displayed.</p>
+<img alt="_images/inasafe_pdf_output.png" class="align-center" src="_images/inasafe_pdf_output.png" style="width: 500pt;" />
+</div>
+<div class="section" id="save-results-and-qgis-project">
+<h3>Save results and QGIS project<a class="headerlink" href="#save-results-and-qgis-project" title="Permalink to this headline">¶</a></h3>
+<p>1. The output layer result of the assessment can be saved by right clicking on the
+layer.</p>
+<img alt="_images/inasafe_save_as_vector1.png" class="align-center" src="_images/inasafe_save_as_vector1.png" style="width: 300pt;" />
+<p>2. Then <em class="guilabel">Save As</em> a shapefile or a raster. However the keywords and statistics
+do not get saved.</p>
+<img alt="_images/inasafe_save_as_vector2.png" class="align-center" src="_images/inasafe_save_as_vector2.png" style="width: 300pt;" />
+<p>3. You can also save the project under QGIS so that you can access your current
+window view anytime needed.</p>
+<p>Now that the project is saved under QGIS, you can go back to your work anytime
+you need. However, the statistical data will be lost whenever the project is
+closed. To get the data back, you will need to redo the impact analysis process
+we described above from <em class="guilabel">Run</em>.</p>
+</div>
+</div>
+<div class="section" id="further-exercise">
+<h2>Further exercise<a class="headerlink" href="#further-exercise" title="Permalink to this headline">¶</a></h2>
+<p>Using the data in your Quiapo directory answer the following questions with
+Inasafe:</p>
+<ul class="simple">
+<li>In case of <strong>flood (100 year)</strong> event, how many <strong>people might need evacuation</strong>?</li>
+</ul>
+<p>Explore the other features of InaSAFE.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/essclogotrace_thumbnail.jpg" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Using InaSAFE plugin in QGIS</a><ul>
+<li><a class="reference internal" href="#concept">Concept</a></li>
+<li><a class="reference internal" href="#how-does-it-work">How does it work?</a></li>
+<li><a class="reference internal" href="#install-inasafe-plugin-from-qgis-repository">Install InaSAFE Plugin from QGIS Repository</a><ul>
+<li><a class="reference internal" href="#enable-inasafe-plugin-in-qgis">Enable InaSAFE Plugin in QGIS</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#using-inasafe">Using InaSAFE</a><ul>
+<li><a class="reference internal" href="#inasafe-options">InaSAFE Options</a></li>
+<li><a class="reference internal" href="#adjust-projection">Adjust Projection</a></li>
+<li><a class="reference internal" href="#exploring-inasafe-plugin">Exploring InaSAFE Plugin</a></li>
+<li><a class="reference internal" href="#the-questions-section">The Questions Section</a></li>
+<li><a class="reference internal" href="#hazard">Hazard</a></li>
+<li><a class="reference internal" href="#adding-keyword-metadata">Adding keyword metadata</a></li>
+<li><a class="reference internal" href="#exposure">Exposure</a></li>
+<li><a class="reference internal" href="#impact-analysis">Impact Analysis</a></li>
+<li><a class="reference internal" href="#the-results-section">The Results section</a></li>
+<li><a class="reference internal" href="#enhancing-the-map-output">Enhancing the Map Output</a></li>
+<li><a class="reference internal" href="#print-results">Print Results</a></li>
+<li><a class="reference internal" href="#save-results-and-qgis-project">Save results and QGIS project</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#further-exercise">Further exercise</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/inasafe.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="index.html">NOAH-WB-FOSS4G Workshop 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, http://www.essc.org.ph license under GNU Free Document License.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>
