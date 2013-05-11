@@ -1,0 +1,48 @@
+===============================================
+Title		2007 Population Density
+
+Abstract	This is a raster puplation density based on 
+                2007 census data.
+
+                Values are computed based on number of people per hectare.
+                Pixel resolution is 100m x 100m or 1 hectare.
+		
+Keywords	Manila, population density,
+
+Identifier	
+
+Series		
+
+Publisher	Environmental Science for Social Change
+
+Originator	Environmental Science for Social Change 
+		1/F Manila Observatory Building
+		Ateneo de Manila University Campus
+		Loyola Heights, Q.C., Philippines
+
+Email		esscmanila@essc.org.ph
+
+Publication Date 
+
+License	    	 Copyright to Environmental Science for Social Change
+		 http://essc.org.ph/content/view/22/109/ 	
+
+Extents      	xMin,yMin 120.98046,14.59140 : xMax,yMax 120.991024,14.60373
+
+(EPSG:4326)
+
+Projection	 +proj=longlat +datum=WGS84 +no_defs
+
+Format	 	 GeoTiff
+
+URI	 	 http://www.essc.org.ph
+
+Scale		 
+
+Data Layers	 population density
+
+Changelog
+
+Distribution    Training purposes
+
+================================================
