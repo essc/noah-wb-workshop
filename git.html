@@ -27,7 +27,7 @@
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="top" title="NOAH-WB-FOSS4G Workshop 0.1 documentation" href="index.html" />
-    <link rel="next" title="Document License (GFDL V.1.3)" href="gfdl.html" />
+    <link rel="next" title="Using TileMill and MapBox" href="tilemill.html" />
     <link rel="prev" title="NOAH-WB-FOSS4G Workshop Materials" href="index.html" /> 
   </head>
   <body>
@@ -38,7 +38,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="gfdl.html" title="Document License (GFDL V.1.3)"
+          <a href="tilemill.html" title="Using TileMill and MapBox"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="index.html" title="NOAH-WB-FOSS4G Workshop Materials"
@@ -54,9 +54,17 @@
             
   <div class="section" id="using-git-and-github">
 <h1>Using Git and GitHub<a class="headerlink" href="#using-git-and-github" title="Permalink to this headline">¶</a></h1>
+<p>Git is a distributed revision control and source code management (SCM) system
+with an emphasis on speed. Initially designed and developed by Linus Torvalds
+for Linux kernel development, Git has since been adopted by many other projects.</p>
+<p>Every Git working directory is a full-fledged repository with complete history
+and full revision tracking capabilities, not dependent on network access or a
+central server.</p>
+<p>Git is free software distributed under the terms of the GNU General
+Public License version 2.</p>
 <div class="section" id="setting-up-your-github-account-and-git">
 <h2>Setting up your GitHub account and Git<a class="headerlink" href="#setting-up-your-github-account-and-git" title="Permalink to this headline">¶</a></h2>
-<p>1. Create a GitHub account,
+<p>1. Create a GitHub account, go to:
 <a class="reference external" href="https://github.com/users">https://github.com/users</a></p>
 <p>2. Set up Git in your
 machine.  Open the <cite>Terminal</cite>.</p>
@@ -82,12 +90,12 @@ $ git config --global credential.helper 'cache --timeout=3600'
 <div class="section" id="forking-a-repo">
 <h2>Forking a repo<a class="headerlink" href="#forking-a-repo" title="Permalink to this headline">¶</a></h2>
 <p>We will start editing some files to the <tt class="docutils literal"><span class="pre">noah-wb-workshop</span></tt> repository.</p>
-<p>1.  To fork the repo, go to
+<p>1.  To fork the repo, go to:
 <a class="reference external" href="https://github.com/essc/noah-wb-workshop">https://github.com/essc/noah-wb-workshop</a></p>
 <p>2. Click the <cite>Fork</cite>
 button.</p>
 <img alt="_images/fork_noahwb_repo.png" class="align-center" src="_images/fork_noahwb_repo.png" style="width: 500pt;" />
-<p>The repo is now forked in your own GitHub account, but, you need clone
+<p>The repo is now forked in your own GitHub account, but, you need to clone
 the project in your local machine to work on the project.</p>
 <p>3. Cloning your fork.
 In the <cite>Terminal</cite>,</p>
@@ -107,8 +115,9 @@ $ git fetch upstream
 </div>
 <div class="section" id="editing-files-in-your-forked-project">
 <h2>Editing files in your forked project.<a class="headerlink" href="#editing-files-in-your-forked-project" title="Permalink to this headline">¶</a></h2>
-<p>1. In your file manager, open the <tt class="docutils literal"><span class="pre">noah-wb-workshop</span></tt> directory. Go to the <tt class="docutils literal"><span class="pre">webmap</span></tt>
-directory.  Open the <tt class="docutils literal"><span class="pre">map1.html</span></tt> in a text editor.  This is a page template
+<p>1. In your <cite>file manager</cite>, open the <tt class="docutils literal"><span class="pre">noah-wb-workshop</span></tt> directory. Go to the
+<tt class="docutils literal"><span class="pre">webmap</span></tt> directory.  Open the <tt class="docutils literal"><span class="pre">map1.html</span></tt> in a <cite>text editor</cite>.  This is a
+page template
 for a webmap we will create.</p>
 <pre class="literal-block">
 &lt;html&gt;
@@ -116,7 +125,7 @@ for a webmap we will create.</p>
         &lt;meta http-equiv=&quot;Content-type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
         &lt;title&gt;Leaflet Map1&lt;/title&gt;
         &lt;link rel=&quot;stylesheet&quot; href=&quot;leaflet.css&quot; /&gt;
-        &lt;script src=&quot;js/leaflet.js&quot;&gt;&lt;/script&gt;
+        &lt;script type=&quot;text/javascript&quot; src=&quot;js/leaflet.js&quot;&gt;&lt;/script&gt;
         &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;leaflet-openweathermap.css&quot; /&gt;
         &lt;script type=&quot;text/javascript&quot; src=&quot;js/leaflet-openweathermap.js&quot;&gt;&lt;/script&gt;
 &lt;/head&gt;
@@ -138,22 +147,22 @@ var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
 map.addLayer(osm);
 &lt;/script&gt;</pre>
 </div>
-<p>3. Save the your html file and open in your web
-browser.</p>
+<p>3. Save your html file and open in your
+<cite>webbrowser</cite>.</p>
 <img alt="_images/map1.png" class="align-center" src="_images/map1.png" style="width: 400pt;" />
 <p>4. Let&#8217;s add the <tt class="docutils literal"><span class="pre">Precipitation</span></tt> layer from <a class="reference external" href="http://www.openweathermap.org/">http://www.openweathermap.org/</a> .
 Below the <tt class="docutils literal"><span class="pre">map.addLayer(osm);</span></tt>, add the following:</p>
 <div class="highlight-python"><pre>var precipitation = L.OWM.precipitation({showLegend: false, opacity: 0.5});
 map.addLayer(precipitation);</pre>
 </div>
-<p>The full html should look like this:</p>
+<p>The full html code should look like this:</p>
 <pre class="literal-block">
 &lt;html&gt;
 &lt;head&gt;
         &lt;meta http-equiv=&quot;Content-type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
         &lt;title&gt;Leaflet Map1&lt;/title&gt;
         &lt;link rel=&quot;stylesheet&quot; href=&quot;leaflet.css&quot; /&gt;
-        &lt;script src=&quot;js/leaflet.js&quot;&gt;&lt;/script&gt;
+        &lt;script type=&quot;text/javascript&quot; src=&quot;js/leaflet.js&quot;&gt;&lt;/script&gt;
         &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;leaflet-openweathermap.css&quot; /&gt;
         &lt;script type=&quot;text/javascript&quot; src=&quot;js/leaflet-openweathermap.js&quot;&gt;&lt;/script&gt;
 &lt;/head&gt;
@@ -170,7 +179,7 @@ map.addLayer(precipitation);</pre>
 
         map.addLayer(osm);
 
-        &lt;!-- Add precipitation layer from openweathermap --&gt;
+        &lt;!-- Add precipitation layer from OpenWeatherMap, and set the opacity to 50% --&gt;
         var precipitation = L.OWM.precipitation({showLegend: false, opacity: 0.5});
 
         map.addLayer(precipitation);
@@ -205,7 +214,9 @@ changes.</p>
 <li><a class="reference external" href="https://help.github.com/categories/54/articles">https://help.github.com/categories/54/articles</a></li>
 <li><a class="reference external" href="http://git-scm.com/">http://git-scm.com/</a></li>
 <li><a class="reference external" href="http://gitimmersion.com/">http://gitimmersion.com/</a></li>
+<li><a class="reference external" href="http://www.openweathermap.org/">http://www.openweathermap.org/</a></li>
 <li><a class="reference external" href="http://wiki.openstreetmap.org/wiki/User:Zartbitter/OpenWeatherMap">http://wiki.openstreetmap.org/wiki/User:Zartbitter/OpenWeatherMap</a></li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Git_%28software%29">http://en.wikipedia.org/wiki/Git_%28software%29</a></li>
 </ul>
 </div>
 </div>
@@ -235,8 +246,8 @@ changes.</p>
   <p class="topless"><a href="index.html"
                         title="previous chapter">NOAH-WB-FOSS4G Workshop Materials</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="gfdl.html"
-                        title="next chapter">Document License (GFDL V.1.3)</a></p>
+  <p class="topless"><a href="tilemill.html"
+                        title="next chapter">Using TileMill and MapBox</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/git.txt"
@@ -266,7 +277,7 @@ changes.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="gfdl.html" title="Document License (GFDL V.1.3)"
+          <a href="tilemill.html" title="Using TileMill and MapBox"
              >next</a> |</li>
         <li class="right" >
           <a href="index.html" title="NOAH-WB-FOSS4G Workshop Materials"

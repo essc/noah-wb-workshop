@@ -17,10 +17,10 @@ Contents
    :maxdepth: 1
 
    git.rst
+   tilemill.rst
+   inasafe.rst
    gfdl.rst
 
-..   tilemill.rst
-..   inasafe.rst
 
 About ESSC 
 ----------

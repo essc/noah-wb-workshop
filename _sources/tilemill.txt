@@ -1,1 +1,312 @@
-for tilemill materials
+===============================
+Using TileMill and MapBox
+===============================
+
+TileMill is a tool for cartographers to quickly and easily design maps for 
+the web using custom data. It is built on the powerful open-source map 
+rendering library Mapnik. TileMill is not intended to be a general-purpose 
+cartography tool, but rather focuses on streamlining and simplifying a 
+narrow set of use cases.
+
+TileMill can also export directly to the SQLite-based MBTiles file format. 
+This format was designed to make traditional web maps available offline and 
+is used by tools like MapBox Hosting, TileStream, and MapBox for iPad.
+
+
+Creating a MapBox account
+-------------------------------
+
+To create a MapBox account, go to: https://tiles.mapbox.com/signup
+We will use this account to upload our TileMill created maps later.
+
+Interface overview
+--------------------------
+
+.. image:: images/tilemill_interface.png
+   :align: center
+   :width: 500 pt
+
+
+1. Main toolbar
+2. Map preview
+3. Editing tools
+4. Stylesheet editor
+
+Creating a new TileMill project
+-----------------------------------
+
+1. To create a new project, click 
+:menuselection:`Project --> New Project`.
+In the :guilabel:`Filename`, type your project name (i.e. ``100yrflood``)
+Uncheck the :guilabel:`Default data`
+Click :guilabel:`Add` to create your ``100yrflood`` project.
+
+.. image:: images/tilemill_newproj.png
+   :align: center
+   :width: 300 pt
+
+2. In the :guilabel:`Project` list, select your ``100yrflood`` project.
+This will load your new project with a default background color.
+
+.. image:: images/tilemill_newproj_loaded.png
+   :align: center
+   :width: 300 pt
+
+3. Delete the background color by removing 
+the::
+
+ Map {
+   background-color: #b8dee6;
+ }
+
+ 
+4. Click 
+:guilabel:`Save`.
+
+Adding layers
+----------------------
+
+1. To add layers, click 
+:menuselection:`Layers --> Add Layer`
+
+.. image:: images/tilemill_addlayer.png
+   :align: center
+   :width: 300 pt
+ 
+2. The :guilabel:`Add layer` dialog allows you to choose a 
+layer to be added.
+
+.. image:: images/tilemill_addlayer_dialog.png
+   :align: center
+   :width: 300 pt
+
+3. Click the :guilabel:`Browse` and navigate to select your 
+``~/noah_wb_workshop/source/data/quiapo/100yr_flooding.shp`` and 
+click :guilabel:`Done`.
+
+.. image:: images/tilemill_addlayer_dialog2.png
+   :align: center
+   :width: 300 pt
+
+4. Once the ``100yrflooding`` is selected, click 
+:guilabel:`Save & Style`.
+
+5. To view the layer in the :guilabel:`Map Preview`, click the 
+:guilabel:`Zoom to Extent` of the ``100yrflooding`` layer.
+
+.. image:: images/tilemill_zoomtoextent.png
+   :align: center
+   :width: 300 pt
+
+6. The new layer is now visible in your :guilabel:`Map Preview` 
+
+.. image:: images/tilemill_layer.png
+   :align: center
+   :width: 300 pt
+
+Styling layers
+--------------------
+
+We will improve the colors of this layer by adding different ``polygon-fill`` 
+for each flood hazard and setting the ``polygon-opacity`` to ``50%``.
+
+1. In the :guilabel:`Stylesheet editor` replace the default style with the 
+following style ::
+
+ #100yrflooding {
+  [level = 0.5] {polygon-fill: #FFFF66;}
+  [level = 1.5] {polygon-fill: #FF9900;}
+  [level = 1.6] {polygon-fill: #FF0000;}
+  polygon-opacity: 0.5;
+  }
+ 
+2. Click 
+:guilabel:`Save`
+
+.. image:: images/tilemill_layer_styled.png
+   :align: center
+   :width: 300 pt
+
+Setting your project properties
+------------------------------------
+
+Before exporting your map, we need to define several settings in your project.
+
+1. Project property setting are available by clicking the 
+:guilabel:`Settings` button.
+
+.. image:: images/tilemill_proj_settings.png
+   :align: center
+   :width: 300 pt
+
+The :guilabel:`Project settings` configures several options such as the 
+your project name (`Name`), description (`Description`), format, 
+map center (``Center``), extent (`Bounds`) and others.
+
+.. image:: images/tilemill_proj_settings.png
+   :align: center
+   :width: 300 pt
+
+2. Type the following configuration in your :guilabel:`Project setting`.
+::
+
+ Name: 100 year Flood Hazard
+ Description: 100 year flood hazard in Metro Manila.
+ Zoom: 12-16
+ Center: 120.9793,14.5944,13
+ Bounds: 120.9333,14.4110,121.1275,14.7759
+
+.. image:: images/tilemill_proj_settings2.png
+   :align: center
+   :width: 300 pt
+
+3. Click 
+:guilabel:`Save`.
+
+
+Publishing your map to MapBox hosting
+-------------------------------------------
+
+1. Upload to MapBox hosting, click 
+:menuselection:`Export --> Upload`.
+
+.. image:: images/tilemill_export_upload.png
+   :align: center
+   :width: 300 pt
+
+2. You can set additional changes in your :guilabel:`Project settings` 
+including your MapBox account.  Once finished, click :guilabel:`Upload`.
+
+.. image:: images/tilemill_export_upload2.png
+   :align: center
+   :width: 300 pt
+
+3. Depending on the size of your map and your bandwidth, this can take 
+some time to finish.  You can see the progress by clicking 
+:menuselection:`Export --> View Exports`
+ 
+.. image:: images/tilemill_export_progress.png
+   :align: center
+   :width: 300 pt
+
+
+Viewing your map in MapBox hosting
+---------------------------------------
+
+1. To view your uploaded map in Mapbox, go to: https://tiles.mapbox.com/login
+Login with your account.  Your uploaded should be visible in the list.
+
+.. image:: images/mapbox_account.png
+   :align: center
+   :width: 300 pt
+
+2. You can click any of your uploaded maps to view it.  Within this map view, 
+you can already choose other options to share your map.
+
+.. image:: images/mapbox_mapview.png
+   :align: center
+   :width: 300 pt
+
+
+Using MapBox layers and compositing other layers
+------------------------------------------------------
+
+We now have a Flood hazard layer designed and hosted in MapBox.  To add more 
+context into our map, we will use one of MapBox designed tiles and combine 
+it with our Flood Hazard layer.
+
+1. Go back to your main MapBox page and click :guilabel:`New Map` and choose 
+the `Terrain` layer.
+
+.. image:: images/mapbox_terrain.png
+   :align: center
+   :width: 300 pt
+
+
+.. image:: images/mapbox_newmap.png
+   :align: center
+   :width: 300 pt
+
+
+2. In the :guilabel:`Custom layer` tab, click 
+:guilabel:`Add custom layer`.
+
+.. image:: images/mapbox_add_customlayer.png
+   :align: center
+   :width: 300 pt
+
+3. Choose the flood layer you uploaded, listed in the 
+:guilabel:`My maps`.
+
+.. image:: images/mapbox_add_mymaps.png
+   :align: center
+   :width: 300 pt
+
+You flood layer is now added in MapBox's Terrain layer, this provides street 
+level data context to your flood map. 
+
+.. image:: images/mapbox_mapcomposite.png
+   :align: center
+   :width: 300 pt
+
+
+Check the other features in creating the map and then click 
+:guilabel:`Save changes`.
+You new map is now available for sharing and use in various webmap applications.
+
+
+
+Adding your MapBox tiles in Leaflet
+----------------------------------------
+
+1. In your `file manager`, open the ``noah-wb-workshop`` directory. Go to the 
+``webmap`` directory.  Open your ``map1fin.html`` in a `text editor`.  We will 
+modify this page to use your MapBox tiles.
+
+.. include:: webmap/map1fin.html
+   :literal:
+
+2. Let's add the the MapBox js. Inside the ``head`` tag, add the 
+following::
+
+ <link rel="stylesheet" type="text/css" href="mapbox.css" />
+ <script type="text/javascript" src="js/mapbox.js"></script>
+
+3. Delete the OSM tile and replace with your own MapBox map using your own 
+map ID (for example, map ID is ``maning.map-lynjb1fn``::
+
+ var map = L.mapbox.map('map','maning.map-lynjb1fn');
+ map.addLayer(map); 
+
+4. Save your html file as a new file and open in your 
+`webbrowser`.
+
+The full html code should look like this:
+
+.. include:: webmap/map2fin.html
+   :literal:
+
+
+And your map like this:
+
+.. image:: images/map2.png
+   :align: center
+   :width: 500 pt
+
+
+.. further demo
+.. Show a samples of tilemill output
+
+
+References
+------------------
+
+* http://mapbox.com
+* https://github.com/mapbox/tilemill
+* http://mapbox.com/tilemill/docs/manual/
+* http://support.mapbox.com/discussions/tilemill
+
+
+.. raw:: latex
+   
+   \pagebreak[4]

@@ -1,20 +1,20 @@
 ------------------------------------------------------------------------
-r811 | maning | 2013-05-10 22:19:10 +0800 (Fri, 10 May 2013) | 1 line
+r831 | maning | 2013-05-11 18:39:44 +0800 (Sat, 11 May 2013) | 1 line
 
-compile and copy to git
+screenshots
 ------------------------------------------------------------------------
-r809 | maning | 2013-05-10 22:06:20 +0800 (Fri, 10 May 2013) | 1 line
+r830 | maning | 2013-05-11 18:39:04 +0800 (Sat, 11 May 2013) | 1 line
 
-disable sphinx to github
+pep8 and spellchecks
 ------------------------------------------------------------------------
-r808 | maning | 2013-05-10 22:04:52 +0800 (Fri, 10 May 2013) | 1 line
+r829 | maning | 2013-05-11 18:10:41 +0800 (Sat, 11 May 2013) | 1 line
 
-add sphinx to github
+mapbox section
 ------------------------------------------------------------------------
-r807 | maning | 2013-05-10 22:03:48 +0800 (Fri, 10 May 2013) | 1 line
+r828 | maning | 2013-05-11 17:59:54 +0800 (Sat, 11 May 2013) | 1 line
 
-add sphinx to github
+mapbox section
 ------------------------------------------------------------------------
-r806 | maning | 2013-05-10 21:38:04 +0800 (Fri, 10 May 2013) | 1 line
+r827 | maning | 2013-05-11 17:34:23 +0800 (Sat, 11 May 2013) | 1 line
 
-add more in the about section
+tilemill section reduce screenshot size

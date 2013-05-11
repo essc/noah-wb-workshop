@@ -2,12 +2,23 @@
 ========================
 Using Git and GitHub
 ========================
+.. to add about git and github
 
+Git is a distributed revision control and source code management (SCM) system 
+with an emphasis on speed. Initially designed and developed by Linus Torvalds 
+for Linux kernel development, Git has since been adopted by many other projects.
+
+Every Git working directory is a full-fledged repository with complete history 
+and full revision tracking capabilities, not dependent on network access or a 
+central server.
+
+Git is free software distributed under the terms of the GNU General 
+Public License version 2.
 
 Setting up your GitHub account and Git
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
-1. Create a GitHub account, 
+1. Create a GitHub account, go to: 
 https://github.com/users
 
 2. Set up Git in your 
@@ -40,7 +51,7 @@ Forking a repo
 
 We will start editing some files to the ``noah-wb-workshop`` repository.
 
-1.  To fork the repo, go to 
+1.  To fork the repo, go to: 
 https://github.com/essc/noah-wb-workshop
 
 2. Click the `Fork` 
@@ -50,7 +61,7 @@ button.
    :align: center
    :width: 500 pt
 
-The repo is now forked in your own GitHub account, but, you need clone
+The repo is now forked in your own GitHub account, but, you need to clone
 the project in your local machine to work on the project.
 
 3. Cloning your fork.  
@@ -74,8 +85,9 @@ get updates from the original ``essc`` repository. We will label this as
 Editing files in your forked project.
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
-1. In your file manager, open the ``noah-wb-workshop`` directory. Go to the ``webmap``
-directory.  Open the ``map1.html`` in a text editor.  This is a page template
+1. In your `file manager`, open the ``noah-wb-workshop`` directory. Go to the 
+``webmap`` directory.  Open the ``map1.html`` in a `text editor`.  This is a 
+page template
 for a webmap we will create.
 
 .. include:: webmap/map1.html
@@ -91,8 +103,8 @@ following::
  map.addLayer(osm);
  </script>
 
-3. Save the your html file and open in your web 
-browser.
+3. Save your html file and open in your 
+`webbrowser`.
 
 .. image:: images/map1.png
    :align: center
@@ -105,7 +117,7 @@ Below the ``map.addLayer(osm);``, add the following::
  var precipitation = L.OWM.precipitation({showLegend: false, opacity: 0.5});
  map.addLayer(precipitation);
 
-The full html should look like this:
+The full html code should look like this:
 
 .. include:: webmap/map1fin.html
    :literal:
@@ -148,4 +160,6 @@ References
 * https://help.github.com/categories/54/articles
 * http://git-scm.com/
 * http://gitimmersion.com/
+* http://www.openweathermap.org/
 * http://wiki.openstreetmap.org/wiki/User:Zartbitter/OpenWeatherMap
+* http://en.wikipedia.org/wiki/Git_%28software%29
