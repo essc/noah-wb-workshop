@@ -1,0 +1,42 @@
+===============================================
+Title		Roads in the Vicariate of San Jose de Trozo and surrounding cities/municipalities.
+
+Abstract	Road network in the Vicariate of San Jose de Trozo and surrounding cities/municipalities.  
+                
+                Digitized through OpenStreetMap.org
+		Attributes of roads gathered through field mapping.
+		
+Keywords	San Jose de Trozo, Quiapo, roads
+
+Identifier	
+
+Series		
+
+Publisher	OpenstreetMap.org
+
+Originator	
+
+Email		
+
+Publication Date 
+
+License	    	 Licensed under the Open Data Commons Open Database License (ODbL)
+		
+Extents      	 xMin,yMin 120.943,14.5413 : xMax,yMax 121.042,14.6385
+(EPSG:4326)
+
+Projection	 +proj=longlat +datum=WGS84 +no_defs
+
+Format	 	 ESRI Shapefile
+
+URI	 	 http://www.essc.org.ph
+
+Scale		 
+
+Data Layers	 
+
+Changelog	Extracted on 2013-04-15 02:00
+
+Distribution	
+
+================================================
