@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>&lt;no title&gt; &mdash; NOAH-WB-FOSS4G Workshop 0.1 documentation</title>
+    <title>Using TileMill and MapBox &mdash; NOAH-WB-FOSS4G Workshop 0.1 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -26,7 +26,9 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="NOAH-WB-FOSS4G Workshop 0.1 documentation" href="index.html" /> 
+    <link rel="top" title="NOAH-WB-FOSS4G Workshop 0.1 documentation" href="index.html" />
+    <link rel="next" title="Using InaSAFE plugin in QGIS" href="inasafe.html" />
+    <link rel="prev" title="Using Git and GitHub" href="git.html" /> 
   </head>
   <body>
     <div class="related">
@@ -35,6 +37,12 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="inasafe.html" title="Using InaSAFE plugin in QGIS"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="git.html" title="Using Git and GitHub"
+             accesskey="P">previous</a> |</li>
         <li><a href="index.html">NOAH-WB-FOSS4G Workshop 0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
@@ -44,7 +52,250 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <p>for tilemill materials</p>
+  <div class="section" id="using-tilemill-and-mapbox">
+<h1>Using TileMill and MapBox<a class="headerlink" href="#using-tilemill-and-mapbox" title="Permalink to this headline">¶</a></h1>
+<p>TileMill is a tool for cartographers to quickly and easily design maps for
+the web using custom data. It is built on the powerful open-source map
+rendering library Mapnik. TileMill is not intended to be a general-purpose
+cartography tool, but rather focuses on streamlining and simplifying a
+narrow set of use cases.</p>
+<p>TileMill can also export directly to the SQLite-based MBTiles file format.
+This format was designed to make traditional web maps available offline and
+is used by tools like MapBox Hosting, TileStream, and MapBox for iPad.</p>
+<div class="section" id="creating-a-mapbox-account">
+<h2>Creating a MapBox account<a class="headerlink" href="#creating-a-mapbox-account" title="Permalink to this headline">¶</a></h2>
+<p>To create a MapBox account, go to: <a class="reference external" href="https://tiles.mapbox.com/signup">https://tiles.mapbox.com/signup</a>
+We will use this account to upload our TileMill created maps later.</p>
+</div>
+<div class="section" id="interface-overview">
+<h2>Interface overview<a class="headerlink" href="#interface-overview" title="Permalink to this headline">¶</a></h2>
+<img alt="_images/tilemill_interface.png" class="align-center" src="_images/tilemill_interface.png" style="width: 500pt;" />
+<ol class="arabic simple">
+<li>Main toolbar</li>
+<li>Map preview</li>
+<li>Editing tools</li>
+<li>Stylesheet editor</li>
+</ol>
+</div>
+<div class="section" id="creating-a-new-tilemill-project">
+<h2>Creating a new TileMill project<a class="headerlink" href="#creating-a-new-tilemill-project" title="Permalink to this headline">¶</a></h2>
+<p>1. To create a new project, click
+<em class="menuselection">Project ‣ New Project</em>.
+In the <em class="guilabel">Filename</em>, type your project name (i.e. <tt class="docutils literal"><span class="pre">100yrflood</span></tt>)
+Uncheck the <em class="guilabel">Default data</em>
+Click <em class="guilabel">Add</em> to create your <tt class="docutils literal"><span class="pre">100yrflood</span></tt> project.</p>
+<img alt="_images/tilemill_newproj.png" class="align-center" src="_images/tilemill_newproj.png" style="width: 300pt;" />
+<p>2. In the <em class="guilabel">Project</em> list, select your <tt class="docutils literal"><span class="pre">100yrflood</span></tt> project.
+This will load your new project with a default background color.</p>
+<img alt="_images/tilemill_newproj_loaded.png" class="align-center" src="_images/tilemill_newproj_loaded.png" style="width: 300pt;" />
+<p>3. Delete the background color by removing
+the:</p>
+<div class="highlight-python"><pre>Map {
+  background-color: #b8dee6;
+}</pre>
+</div>
+<p>4. Click
+<em class="guilabel">Save</em>.</p>
+</div>
+<div class="section" id="adding-layers">
+<h2>Adding layers<a class="headerlink" href="#adding-layers" title="Permalink to this headline">¶</a></h2>
+<p>1. To add layers, click
+<em class="menuselection">Layers ‣ Add Layer</em></p>
+<img alt="_images/tilemill_addlayer.png" class="align-center" src="_images/tilemill_addlayer.png" style="width: 300pt;" />
+<p>2. The <em class="guilabel">Add layer</em> dialog allows you to choose a
+layer to be added.</p>
+<img alt="_images/tilemill_addlayer_dialog.png" class="align-center" src="_images/tilemill_addlayer_dialog.png" style="width: 300pt;" />
+<p>3. Click the <em class="guilabel">Browse</em> and navigate to select your
+<tt class="docutils literal"><span class="pre">~/noah_wb_workshop/source/data/quiapo/100yr_flooding.shp</span></tt> and
+click <em class="guilabel">Done</em>.</p>
+<img alt="_images/tilemill_addlayer_dialog2.png" class="align-center" src="_images/tilemill_addlayer_dialog2.png" style="width: 300pt;" />
+<p>4. Once the <tt class="docutils literal"><span class="pre">100yrflooding</span></tt> is selected, click
+<em class="guilabel">Save &amp; Style</em>.</p>
+<p>5. To view the layer in the <em class="guilabel">Map Preview</em>, click the
+<em class="guilabel">Zoom to Extent</em> of the <tt class="docutils literal"><span class="pre">100yrflooding</span></tt> layer.</p>
+<img alt="_images/tilemill_zoomtoextent.png" class="align-center" src="_images/tilemill_zoomtoextent.png" style="width: 300pt;" />
+<ol class="arabic simple" start="6">
+<li>The new layer is now visible in your <em class="guilabel">Map Preview</em></li>
+</ol>
+<img alt="_images/tilemill_layer.png" class="align-center" src="_images/tilemill_layer.png" style="width: 300pt;" />
+</div>
+<div class="section" id="styling-layers">
+<h2>Styling layers<a class="headerlink" href="#styling-layers" title="Permalink to this headline">¶</a></h2>
+<p>We will improve the colors of this layer by adding different <tt class="docutils literal"><span class="pre">polygon-fill</span></tt>
+for each flood hazard and setting the <tt class="docutils literal"><span class="pre">polygon-opacity</span></tt> to <tt class="docutils literal"><span class="pre">50%</span></tt>.</p>
+<p>1. In the <em class="guilabel">Stylesheet editor</em> replace the default style with the
+following style</p>
+<div class="highlight-python"><pre>#100yrflooding {
+ [level = 0.5] {polygon-fill: #FFFF66;}
+ [level = 1.5] {polygon-fill: #FF9900;}
+ [level = 1.6] {polygon-fill: #FF0000;}
+ polygon-opacity: 0.5;
+ }</pre>
+</div>
+<p>2. Click
+<em class="guilabel">Save</em></p>
+<img alt="_images/tilemill_layer_styled.png" class="align-center" src="_images/tilemill_layer_styled.png" style="width: 300pt;" />
+</div>
+<div class="section" id="setting-your-project-properties">
+<h2>Setting your project properties<a class="headerlink" href="#setting-your-project-properties" title="Permalink to this headline">¶</a></h2>
+<p>Before exporting your map, we need to define several settings in your project.</p>
+<p>1. Project property setting are available by clicking the
+<em class="guilabel">Settings</em> button.</p>
+<img alt="_images/tilemill_proj_settings.png" class="align-center" src="_images/tilemill_proj_settings.png" style="width: 300pt;" />
+<p>The <em class="guilabel">Project settings</em> configures several options such as the
+your project name (<cite>Name</cite>), description (<cite>Description</cite>), format,
+map center (<tt class="docutils literal"><span class="pre">Center</span></tt>), extent (<cite>Bounds</cite>) and others.</p>
+<img alt="_images/tilemill_proj_settings.png" class="align-center" src="_images/tilemill_proj_settings.png" style="width: 300pt;" />
+<p>2. Type the following configuration in your <em class="guilabel">Project setting</em>.</p>
+<div class="highlight-python"><pre>Name: 100 year Flood Hazard
+Description: 100 year flood hazard in Metro Manila.
+Zoom: 12-16
+Center: 120.9793,14.5944,13
+Bounds: 120.9333,14.4110,121.1275,14.7759</pre>
+</div>
+<img alt="_images/tilemill_proj_settings2.png" class="align-center" src="_images/tilemill_proj_settings2.png" style="width: 300pt;" />
+<p>3. Click
+<em class="guilabel">Save</em>.</p>
+</div>
+<div class="section" id="publishing-your-map-to-mapbox-hosting">
+<h2>Publishing your map to MapBox hosting<a class="headerlink" href="#publishing-your-map-to-mapbox-hosting" title="Permalink to this headline">¶</a></h2>
+<p>1. Upload to MapBox hosting, click
+<em class="menuselection">Export ‣ Upload</em>.</p>
+<img alt="_images/tilemill_export_upload.png" class="align-center" src="_images/tilemill_export_upload.png" style="width: 300pt;" />
+<p>2. You can set additional changes in your <em class="guilabel">Project settings</em>
+including your MapBox account.  Once finished, click <em class="guilabel">Upload</em>.</p>
+<img alt="_images/tilemill_export_upload2.png" class="align-center" src="_images/tilemill_export_upload2.png" style="width: 300pt;" />
+<p>3. Depending on the size of your map and your bandwidth, this can take
+some time to finish.  You can see the progress by clicking
+<em class="menuselection">Export ‣ View Exports</em></p>
+<img alt="_images/tilemill_export_progress.png" class="align-center" src="_images/tilemill_export_progress.png" style="width: 300pt;" />
+</div>
+<div class="section" id="viewing-your-map-in-mapbox-hosting">
+<h2>Viewing your map in MapBox hosting<a class="headerlink" href="#viewing-your-map-in-mapbox-hosting" title="Permalink to this headline">¶</a></h2>
+<p>1. To view your uploaded map in Mapbox, go to: <a class="reference external" href="https://tiles.mapbox.com/login">https://tiles.mapbox.com/login</a>
+Login with your account.  Your uploaded should be visible in the list.</p>
+<img alt="_images/mapbox_account.png" class="align-center" src="_images/mapbox_account.png" style="width: 300pt;" />
+<p>2. You can click any of your uploaded maps to view it.  Within this map view,
+you can already choose other options to share your map.</p>
+<img alt="_images/mapbox_mapview.png" class="align-center" src="_images/mapbox_mapview.png" style="width: 300pt;" />
+</div>
+<div class="section" id="using-mapbox-layers-and-compositing-other-layers">
+<h2>Using MapBox layers and compositing other layers<a class="headerlink" href="#using-mapbox-layers-and-compositing-other-layers" title="Permalink to this headline">¶</a></h2>
+<p>We now have a Flood hazard layer designed and hosted in MapBox.  To add more
+context into our map, we will use one of MapBox designed tiles and combine
+it with our Flood Hazard layer.</p>
+<p>1. Go back to your main MapBox page and click <em class="guilabel">New Map</em> and choose
+the <cite>Terrain</cite> layer.</p>
+<img alt="_images/mapbox_terrain.png" class="align-center" src="_images/mapbox_terrain.png" style="width: 300pt;" />
+<img alt="_images/mapbox_newmap.png" class="align-center" src="_images/mapbox_newmap.png" style="width: 300pt;" />
+<p>2. In the <em class="guilabel">Custom layer</em> tab, click
+<em class="guilabel">Add custom layer</em>.</p>
+<img alt="_images/mapbox_add_customlayer.png" class="align-center" src="_images/mapbox_add_customlayer.png" style="width: 300pt;" />
+<p>3. Choose the flood layer you uploaded, listed in the
+<em class="guilabel">My maps</em>.</p>
+<img alt="_images/mapbox_add_mymaps.png" class="align-center" src="_images/mapbox_add_mymaps.png" style="width: 300pt;" />
+<p>You flood layer is now added in MapBox&#8217;s Terrain layer, this provides street
+level data context to your flood map.</p>
+<img alt="_images/mapbox_mapcomposite.png" class="align-center" src="_images/mapbox_mapcomposite.png" style="width: 300pt;" />
+<p>Check the other features in creating the map and then click
+<em class="guilabel">Save changes</em>.
+You new map is now available for sharing and use in various webmap applications.</p>
+</div>
+<div class="section" id="adding-your-mapbox-tiles-in-leaflet">
+<h2>Adding your MapBox tiles in Leaflet<a class="headerlink" href="#adding-your-mapbox-tiles-in-leaflet" title="Permalink to this headline">¶</a></h2>
+<p>1. In your <cite>file manager</cite>, open the <tt class="docutils literal"><span class="pre">noah-wb-workshop</span></tt> directory. Go to the
+<tt class="docutils literal"><span class="pre">webmap</span></tt> directory.  Open your <tt class="docutils literal"><span class="pre">map1fin.html</span></tt> in a <cite>text editor</cite>.  We will
+modify this page to use your MapBox tiles.</p>
+<pre class="literal-block">
+&lt;html&gt;
+&lt;head&gt;
+        &lt;meta http-equiv=&quot;Content-type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+        &lt;title&gt;Leaflet Map1&lt;/title&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;leaflet.css&quot; /&gt;
+        &lt;script type=&quot;text/javascript&quot; src=&quot;js/leaflet.js&quot;&gt;&lt;/script&gt;
+        &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;leaflet-openweathermap.css&quot; /&gt;
+        &lt;script type=&quot;text/javascript&quot; src=&quot;js/leaflet-openweathermap.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+        &lt;!-- define a DIV into which the map will appear. Make it take up the whole window --&gt;
+        &lt;div style=&quot;width:100%; height:100%&quot; id=&quot;map&quot;&gt;&lt;/div&gt;
+
+        &lt;script type='text/javascript'&gt;
+
+        &lt;!-- Set map center to Metro Manila at zoom level 10 using OSM Default tile --&gt;         
+        var map = new L.Map('map', {center: new L.LatLng(14.6146, 121.0081), zoom: 10});
+        var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+
+        map.addLayer(osm);
+
+        &lt;!-- Add precipitation layer from OpenWeatherMap, and set the opacity to 50% --&gt;
+        var precipitation = L.OWM.precipitation({showLegend: false, opacity: 0.5});
+
+        map.addLayer(precipitation);
+        &lt;/script&gt;
+
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+
+</pre>
+<p>2. Let&#8217;s add the the MapBox js. Inside the <tt class="docutils literal"><span class="pre">head</span></tt> tag, add the
+following:</p>
+<div class="highlight-python"><pre>&lt;link rel="stylesheet" type="text/css" href="mapbox.css" /&gt;
+&lt;script type="text/javascript" src="js/mapbox.js"&gt;&lt;/script&gt;</pre>
+</div>
+<p>3. Delete the OSM tile and replace with your own MapBox map using your own
+map ID (for example, map ID is <tt class="docutils literal"><span class="pre">maning.map-lynjb1fn</span></tt>:</p>
+<div class="highlight-python"><pre>var map = L.mapbox.map('map','maning.map-lynjb1fn');
+map.addLayer(map);</pre>
+</div>
+<p>4. Save your html file as a new file and open in your
+<cite>webbrowser</cite>.</p>
+<p>The full html code should look like this:</p>
+<pre class="literal-block">
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;Content-type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+        &lt;title&gt;Leaflet Map2&lt;/title&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;leaflet.css&quot; /&gt;
+        &lt;script type=&quot;text/javascript&quot; src=&quot;js/leaflet.js&quot;&gt;&lt;/script&gt;
+        &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;leaflet-openweathermap.css&quot; /&gt;
+        &lt;script type=&quot;text/javascript&quot; src=&quot;js/leaflet-openweathermap.js&quot;&gt;&lt;/script&gt;
+        &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;mapbox.css&quot; /&gt;
+        &lt;script type=&quot;text/javascript&quot; src=&quot;js/mapbox.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+        &lt;!-- define a DIV into which the map will appear. Make it take up the whole window --&gt;
+        &lt;div style=&quot;width:100%; height:100%&quot; id=&quot;map&quot;&gt;&lt;/div&gt;
+
+        &lt;script type='text/javascript'&gt;
+
+        &lt;!-- Use your MapBox layer--&gt;
+        var map = L.mapbox.map('map','maning.map-lynjb1fn');
+
+        map.addLayer(map);
+
+&lt;/script&gt;
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+
+</pre>
+<p>And your map like this:</p>
+<img alt="_images/map2.png" class="align-center" src="_images/map2.png" style="width: 500pt;" />
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://mapbox.com">http://mapbox.com</a></li>
+<li><a class="reference external" href="https://github.com/mapbox/tilemill">https://github.com/mapbox/tilemill</a></li>
+<li><a class="reference external" href="http://mapbox.com/tilemill/docs/manual/">http://mapbox.com/tilemill/docs/manual/</a></li>
+<li><a class="reference external" href="http://support.mapbox.com/discussions/tilemill">http://support.mapbox.com/discussions/tilemill</a></li>
+</ul>
+</div>
+</div>
 
 
           </div>
@@ -55,6 +306,30 @@
             <p class="logo"><a href="index.html">
               <img class="logo" src="_static/essclogotrace_thumbnail.jpg" alt="Logo"/>
             </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Using TileMill and MapBox</a><ul>
+<li><a class="reference internal" href="#creating-a-mapbox-account">Creating a MapBox account</a></li>
+<li><a class="reference internal" href="#interface-overview">Interface overview</a></li>
+<li><a class="reference internal" href="#creating-a-new-tilemill-project">Creating a new TileMill project</a></li>
+<li><a class="reference internal" href="#adding-layers">Adding layers</a></li>
+<li><a class="reference internal" href="#styling-layers">Styling layers</a></li>
+<li><a class="reference internal" href="#setting-your-project-properties">Setting your project properties</a></li>
+<li><a class="reference internal" href="#publishing-your-map-to-mapbox-hosting">Publishing your map to MapBox hosting</a></li>
+<li><a class="reference internal" href="#viewing-your-map-in-mapbox-hosting">Viewing your map in MapBox hosting</a></li>
+<li><a class="reference internal" href="#using-mapbox-layers-and-compositing-other-layers">Using MapBox layers and compositing other layers</a></li>
+<li><a class="reference internal" href="#adding-your-mapbox-tiles-in-leaflet">Adding your MapBox tiles in Leaflet</a></li>
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="git.html"
+                        title="previous chapter">Using Git and GitHub</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="inasafe.html"
+                        title="next chapter">Using InaSAFE plugin in QGIS</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/tilemill.txt"
@@ -83,6 +358,12 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="inasafe.html" title="Using InaSAFE plugin in QGIS"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="git.html" title="Using Git and GitHub"
+             >previous</a> |</li>
         <li><a href="index.html">NOAH-WB-FOSS4G Workshop 0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>

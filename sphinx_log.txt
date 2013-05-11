@@ -1,2 +1,0 @@
-/home/maning/svnlocal/essc_geomatics/fossgis_courses/noah_wb_workshop/source/inasafe.rst:: WARNING: document isn't included in any toctree
-/home/maning/svnlocal/essc_geomatics/fossgis_courses/noah_wb_workshop/source/tilemill.rst:: WARNING: document isn't included in any toctree

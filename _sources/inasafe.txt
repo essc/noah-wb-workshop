@@ -59,8 +59,8 @@ To install the InaSAFE, use the plugin manager in QGIS:
 :menuselection:`Plugins -->` 
 :guilabel:`Fetch Python Plugins`. 
 
-2. Then search for `InaSAFE`, select it and click the install button. The plugin
-will now be added to your plugins menu.
+2. Then search for `InaSAFE`, select it and click the install button. The 
+plugin will now be added to your plugins menu.
 
 .. image:: images/inasafe_plugin_install.png
    :align: center
@@ -69,18 +69,20 @@ will now be added to your plugins menu.
 
 Enable InaSAFE Plugin in QGIS
 .............................
-1. Once the plugin is extracted in QGIS plugin directory, start QGIS and enable it
-from the plugin manager.  To do this, open :guilabel:`Manage Plugins` from the
+1. Once the plugin is extracted in QGIS plugin directory, start QGIS and 
+enable it from the plugin manager.  To do this, open 
+:guilabel:`Manage Plugins` from the
 :menuselection:`Plugins` menu on the menu toolbar.
 
 .. image:: images/manage_plugin.png
    :align: center
    :width: 150 pt
 
-2. A pop-up window that lists all available plugins in your current QGIS project
+2. A pop-up window that lists all available plugins in your current QGIS 
+project
 will appear. Type `InaSAFE` in the filter box. You should see the InaSAFE
-plugin appear in the list. Now :guilabel:`tick the checkbox` next to it to enable the
-plugin.
+plugin appear in the list. Now :guilabel:`tick the checkbox` next to it 
+to enable the plugin.
 
 .. image:: images/inasafe_plugin_activate.png
    :align: center
@@ -137,8 +139,8 @@ this:
    :align: center
    :width: 300 pt
 
-.. note:: You can click on the :guilabel:`Help` button at any time and it will open the
-   help documentation browser to this page. 
+.. note:: You can click on the :guilabel:`Help` button at any time and it will 
+   open the help documentation browser to this page. 
 
 The following options are available on the Options Dialog:
 
@@ -158,7 +160,7 @@ The following options are available on the Options Dialog:
   cause QGIS to turn off the exposure layer used when InaSAFE completes the
   current analysis. You can re-enable the layer visibility again by checking
   its checkbox in the legend.
-* **Keyword cache for remote datasources:** This option is used to determine
+* **Keyword cache for remote data-sources:** This option is used to determine
   where keywords are stored for datasets where it is not possible to write them
   into a .keywords file. See Keywords System for more information on the
   keywords system.
@@ -184,8 +186,9 @@ data layers display in one projection (`WGS-84`).
 1. For that, go to QGIS 
 :menuselection:`Settings --> Project Properties`.
 
-2. Click on :guilabel:`Coordinate Reference System (CRS)` tab in the new dialog box. Tick
-the :guilabel:`Enable on  the fly CRS transformation` box. And then :guilabel:`OK`.
+2. Click on :guilabel:`Coordinate Reference System (CRS)` tab in the new 
+dialog box. Tick the :guilabel:`Enable on  the fly CRS transformation` 
+box. And then :guilabel:`OK`.
 
 .. image:: images/inasafe_crs.png
    :align: center
@@ -201,8 +204,8 @@ Exploring InaSAFE Plugin
 For example, dragging the panel towards the left margin of the QGIS
 application will dock it to the left side of the screen.
 
-2. Depending on your preference you could show the :guilabel:`Layer` and :guilabel:`InaSAFE` 
-panel at the same time.
+2. Depending on your preference you could show the :guilabel:`Layer` and 
+:guilabel:`InaSAFE` panel at the same time.
 
 Or have the :guilabel:`Layer` and :guilabel:`InaSAFE` panels in a tab systems.
 
@@ -267,9 +270,9 @@ raster style.
    :align: center
    :width: 300 pt
 
-You will notice that the layer filled automatically the :guilabel:`hazard` area in the
-InaSAFE dock panel. There are two important things to note when uploading
-data in InaSAFE.
+You will notice that the layer filled automatically the :guilabel:`hazard` 
+area in the InaSAFE dock panel. There are two important things to note 
+when uploading data in InaSAFE.
 
 * Data should follow a keyword metadata system that allows InaSAFE to determine
   if the layer is a hazard or if it is an exposure.
@@ -279,21 +282,23 @@ Adding keyword metadata
 .......................
 
 You may be wondering how the InaSAFE plugin determines whether a layer should
-be listed in the :guilabel:`In the event of` :guilabel:`How many` combo boxes? The plugin 
-relies on simple keyword metadata to be associated with each layer. Each layer
-that has a keyword allocating it's category to hazard will be listed in the 
-:guilabel:`In the event of` combo. Similarly, a category of exposure in the keywords for a
-layer will result in it being listed under the :guilabel:`How many` combo. InaSAFE uses
-the combination of category, subcategory, units and datatype keywords to
-determine which impact functions will be listed in the :guilabel:`Might` combo.
+be listed in the :guilabel:`In the event of` :guilabel:`How many` combo 
+boxes? The plugin relies on simple keyword metadata to be associated with 
+each layer. Each layer that has a keyword allocating it's category to hazard 
+will be listed in the :guilabel:`In the event of` combo. Similarly, a 
+category of exposure in the keywords for a layer will result in it being 
+listed under the :guilabel:`How many` combo. InaSAFE uses
+the combination of category, sub-category, units and data-type keywords to
+determine which impact functions will be listed in the :guilabel:`Might` 
+combo.
 
 In our exercise, the keywords were already created, so the data could fill
-automatically the :guilabel:`In the event of` :guilabel:`How many combo` boxes. If the keywords
-were not created in advance, then we will create them by following one of the
-two steps:
+automatically the :guilabel:`In the event of` :guilabel:`How many combo` boxes. 
+If the keywords were not created in advance, then we will create them by 
+following one of the two steps:
 
-1. Go to the InaSAFE tools on the toolbar, click on the :guilabel:`Keyword Editor` 
-icon.
+1. Go to the InaSAFE tools on the toolbar, click on the 
+:guilabel:`Keyword Editor` icon.
 
 .. image:: images/inasafe_keyword_editor_icon.png
    :align: center
@@ -307,9 +312,10 @@ on the :menuselection:`Keyword Editor` in the scroll list.
    :align: center
    :width: 300 pt
 
-2. Once you click on the :guilabel:`Keyword Editor`, a dialog box containing the flood data
-will be prompted. Since the flood data is a hazard layer, pinpoint the
-:guilabel:`Hazard` Category. In the Subcategory, we will choose :guilabel:`flood [m]` 
+2. Once you click on the :guilabel:`Keyword Editor`, a dialog box containing
+the flood data will be prompted. Since the flood data is a hazard layer, 
+pinpoint the :guilabel:`Hazard` Category. In the Sub-category, we will 
+choose :guilabel:`flood [m]` 
 because our data represents depth of flood in Manila in meter unit.
 
 .. image:: images/inasafe_hazard_keyword.png
@@ -342,11 +348,11 @@ that we explained earlier for the hazard data.
 
 We will create it by using the :guilabel:`Keyword Editor`.
 
-2. Go to the :menuselection:`Plugin --> InaSAFE --> Keyword Editor` in the dialog box. 
-Pinpoint the :guilabel:`Exposure` category.
+2. Go to the :menuselection:`Plugin --> InaSAFE --> Keyword Editor` in the 
+dialog box. Pinpoint the :guilabel:`Exposure` category.
 
-3. Choose :guilabel:`structure` in the :guilabel:`Subcategory` scroll box. Click 
-:guilabel:`OK`.
+3. Choose :guilabel:`structure` in the :guilabel:`Subcategory` scroll box. 
+Click :guilabel:`OK`.
 
 .. image:: images/inasafe_exposure_keyword.png
    :align: center
@@ -362,11 +368,13 @@ entered in the :guilabel:`How many` box of the INASAFE dock panel.
 Impact Analysis
 ...............
 
-The impact function (:guilabel:`Might`) will spatially combine the hazard and exposure
+The impact function (:guilabel:`Might`) will spatially combine the hazard and 
+exposure
 input layers in order to postulate what the impacts of the hazard will be on
 the exposure infrastructure or people. By selecting a combination from the 
-:guilabel:`In the event of` and :guilabel:`How many` combo boxes, an appropriate set 
-of impact functions will be listed in the :guilabel:`Might` combo box.
+:guilabel:`In the event of` and :guilabel:`How many` combo boxes, an 
+appropriate 
+set of impact functions will be listed in the :guilabel:`Might` combo box.
 
 Impact scenarios are predefined depending on what the decision-maker is looking
 for. For our flood analysis in Jakarta, we only have on predefined impact
@@ -379,18 +387,19 @@ The Results section
 ...................
 
 1. Now that we have our two input layers and that we know what impacts we would
-like to assess, click on the :guilabel:`Run` button at the bottom to start the impact
-analysis. At the end of the process, figures will be shown in the 
-:guilabel:`Results` section, a new layer will be added in the QGIS layer panel representing the
-result of the impact function, and the map will differentiate affected and
-non-affected building.
+like to assess, click on the :guilabel:`Run` button at the bottom to start the 
+impact analysis. At the end of the process, figures will be shown in the 
+:guilabel:`Results` section, a new layer will be added in the QGIS layer panel 
+representing the result of the impact function, and the map will differentiate 
+affected and non-affected building.
 
 .. image:: images/inasafe_flood_impact_results.png
    :align: center
    :width: 300 pt
 
 2. The result shows **total number of buildings** and the 
-**number of buildings that might be temporarily closed** in the event of a flood. 
+**number of buildings that might be temporarily closed** in the event of 
+a flood. 
 Also, there is an **Action Checklist** where the question: 
 *Are the critical facilities still open?* And a **Note** description explaining 
 that buildings are said flooded when the flood level exceeds 1 meter.
@@ -403,11 +412,11 @@ Styles can be changed, background layer or other relevant layers can be added,
 layout can be changed using the :guilabel:`Print Composer` in QGIS.
 
 If you would like to add a background layer to your map, all you need to do
-is add a new plugin called :guilabel:`OpenLayers Plugin` in QGIS and follow the same
-steps as we did to acquire the InaSAFE plugin.
+is add a new plugin called :guilabel:`OpenLayers Plugin` in QGIS and follow 
+the same steps as we did to acquire the InaSAFE plugin.
 
-1. To enable the OpenLayers plugin, go to the QGIS :guilabel:`Plugin Manager` and select
-:guilabel:`OpenLayers Plugin` if it is not yet activated.
+1. To enable the OpenLayers plugin, go to the QGIS :guilabel:`Plugin Manager` 
+and select :guilabel:`OpenLayers Plugin` if it is not yet activated.
 
 2. Once installed you should be able to use background imagery and tiles from
 Google, Bing, OpenStreetMap and others.
@@ -416,9 +425,9 @@ Google, Bing, OpenStreetMap and others.
    :align: center
    :width: 300 pt
 
-3. For our exercise, let's add the :menuselection:`Bing Aerial` view to our map as a
-background. Make sure that the background is not on top of the other active
-layers.
+3. For our exercise, let's add the :menuselection:`Bing Aerial` view to our 
+map as a background. Make sure that the background is not on top of the other 
+active layers.
 
 .. image:: images/inasafe_flood_impact_results_bing.png
    :align: center
@@ -428,13 +437,13 @@ Print Results
 .............
 
 The data shown on the screen can be saved into a **PDF file** by clicking on
-:guilabel:`Print` at the bottom of the InaSAFE panel. The PDF file contains then the
-legend for the result of the impact assessment, the map created and a
+:guilabel:`Print` at the bottom of the InaSAFE panel. The PDF file contains 
+then the legend for the result of the impact assessment, the map created and a
 table summarizing the results from the impact function.
 
 However, any change that you want to make into the final map document should be
-done before clicking on the :guilabel:`Print` button of the InaSAFE dock panel. The
-print should be only use once the data is exactly as you want it to be
+done before clicking on the :guilabel:`Print` button of the InaSAFE dock panel. 
+The print should be only use once the data is exactly as you want it to be
 displayed.
 
 .. image:: images/inasafe_pdf_output.png
@@ -444,15 +453,15 @@ displayed.
 Save results and QGIS project
 .............................
 
-1. The output layer result of the assessment can be saved by right clicking on the
-layer.
+1. The output layer result of the assessment can be saved by right clicking 
+on the layer.
 
 .. image:: images/inasafe_save_as_vector1.png
    :align: center
    :width: 300 pt
 
-2. Then :guilabel:`Save As` a shapefile or a raster. However the keywords and statistics
-do not get saved.
+2. Then :guilabel:`Save As` a shapefile or a raster. However the keywords and 
+statistics do not get saved.
 
 .. image:: images/inasafe_save_as_vector2.png
    :align: center
@@ -473,9 +482,24 @@ Further exercise
 Using the data in your Quiapo directory answer the following questions with
 Inasafe:
 
-* In case of **flood (100 year)** event, how many **people might need evacuation**?
+* In case of **flood (100 year)** event, how many 
+  **people might need evacuation**?
 
 Explore the other features of InaSAFE.
+
+.. further demo
+.. Show a sample output of earthquake
+.. Show inasafe realtime 
+.. The inasafe repo in github
+.. Show the tutorial on how to make custom impact function
+
+
+References
+------------------
+
+* http://inasafe.org/
+* http://inasafe.org/tutorial-docs/tutorial.html
+* https://github.com/AIFDR/inasafe/
 
 .. raw:: latex
    
