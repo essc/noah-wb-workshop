@@ -136,7 +136,7 @@ Commit your changes in Git and GitHub
 1. Let's commit your changes in your local repository.  
 In the `Terminal`::
 
- $ git commit -m 'first commit'
+ $ git commit -am 'first commit'
  # Commits your files, adding the message "first commit"
 
 2. Your commits are now in your local repository.  
